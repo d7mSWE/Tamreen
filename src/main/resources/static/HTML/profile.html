@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفي الشخصي - منصة تمرين</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- ملفات الستايل -->
+    <link rel="stylesheet" href="/CSS/style.css?v=145">
+    
+    <script src="/javascript/i18n.js?v=145"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/home">
+        <i class="fas fa-file-alt ms-2"></i>منصة تمرين
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/home" data-i18n="home">الرئيسية</a></li>
+        <li class="nav-item"><a class="nav-link" href="/create-quiz" data-i18n="create-quiz">إنشاء اختبار</a></li>
+        <li class="nav-item"><a class="nav-link" href="/home#features" data-i18n="features">المميزات</a></li>
+      </ul>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <button class="btn btn-outline-light rounded-pill px-4 fw-bold" id="logoutBtn" data-i18n="logout">
+          <i class="fas fa-sign-out-alt me-2"></i>تسجيل الخروج
+        </button>
+        <div class="theme-toggle-container">
+            <div class="theme-toggle" id="themeToggle" title="تغيير المظهر">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="theme-toggle-ball"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container container py-5 my-5">
+    <div class="row">
+        <!-- Sidebar Menu -->
+        <div class="col-md-3 mb-4">
+            <div class="card card border-0 rounded-4 shadow-sm p-3">
+                <div class="nav flex-column nav-pills gap-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active text-end" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" data-i18n="my-profile">
+                        <i class="fas fa-user-edit me-2"></i> بياناتي الشخصية
+                    </button>
+                    <button class="nav-link text-end" id="v-pills-quizzes-tab" data-bs-toggle="pill" data-bs-target="#v-pills-quizzes" type="button" data-i18n="my-quizzes">
+                        <i class="fas fa-clipboard-list me-2"></i> اختباراتي
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="col-md-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                
+                <!-- Personal Info Tab -->
+                <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel">
+                    <div class="card card border-0 rounded-4 shadow-sm p-4">
+                        <h4 class="mb-4 fw-bold" style="color: var(--text-primary);" data-i18n="my-profile"><i class="fas fa-user-circle me-2 text-primary"></i> بياناتي الشخصية</h4>
+                        <div id="profileAlert" class="alert d-none"></div>
+                        <form id="profileForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold" data-i18n="username-label">اسم المستخدم</label>
+                                    <input type="text" id="profUsername" class="form-control form-control form-control-lg rounded-3">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold" data-i18n="email-label">البريد الإلكتروني</label>
+                                    <input type="email" id="profEmail" class="form-control form-control form-control-lg rounded-3">
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <h5 class="mb-3 fw-bold" style="color: var(--text-primary);" data-i18n="change-password">تغيير كلمة المرور</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold" data-i18n="new-password">الجديدة (اختياري)</label>
+                                    <input type="password" id="profNewPassword" class="form-control form-control form-control-lg rounded-3">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold" data-i18n="confirm-password">تأكيد الجديدة</label>
+                                    <input type="password" id="profConfirmPassword" class="form-control form-control form-control-lg rounded-3">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary px-4 py-2" class="fw-bold rounded-4" data-i18n="save-changes">
+                                <i class="fas fa-save me-2"></i> حفظ التعديلات
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- My Quizzes Tab -->
+                <div class="tab-pane fade" id="v-pills-quizzes" role="tabpanel">
+                    <div class="card card border-0 rounded-4 shadow-sm p-4">
+                        <h4 class="mb-4 fw-bold" style="color: var(--text-primary);" data-i18n="created-quizzes"><i class="fas fa-tasks me-2 text-primary"></i> الاختبارات التي أنشأتها</h4>
+                        <div id="quizzesAlert" class="alert d-none"></div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table align-middle">
+                                <thead style="background: var(--bg-secondary);">
+                                    <tr>
+                                        <th data-i18n="quiz-table-title">عنوان الاختبار</th>
+                                        <th data-i18n="quiz-table-count">عدد الأسئلة</th>
+                                        <th data-i18n="quiz-table-date">التاريخ</th>
+                                        <th data-i18n="quiz-table-actions">روابط وتعديل</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="quizzesTableBody">
+                                    <!-- يتم التعبئة عبر JS -->
+                                    <tr><td colspan="4" class="text-center py-4" data-i18n="loading">جاري التحميل...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Password Confirmation Modal -->
+<div class="modal fade" id="passwordConfirmModal" tabindex="-1" aria-labelledby="passwordConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal" style="border-radius: 12px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title" id="passwordConfirmModalLabel" style="font-weight: 700; color: var(--text-primary);" data-i18n="confirm-identity">تأكيد الهوية</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-4" data-i18n="confirm-identity-desc">يرجى إدخال كلمة المرور الحالية لتأكيد حفظ التعديلات وحماية حسابك.</p>
+        <div id="modalAlert" class="alert d-none" style="border-radius: 10px;"></div>
+        <div class="mb-3">
+          <label class="form-label fw-bold" style="color: var(--text-primary);" data-i18n="current-password">كلمة المرور الحالية</label>
+          <input type="password" id="modalOldPassword" class="form-control form-control form-control-lg rounded-3" required>
+        </div>
+        <button type="button" id="confirmSaveBtn" class="btn btn-primary w-100" style="border-radius: 10px; font-weight: bold; padding: 10px;" data-i18n="confirm-save-btn">
+            تأكيد وحفظ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=140"></script>
+<script src="/javascript/theme.js?v=140"></script>
+<script src="/javascript/auth.js?v=140"></script>
+<script src="/javascript/profile.js?v=140"></script>
+<footer class="bg-dark mt-auto text-white py-4 text-center">
+    <div class="container">
+        <p class="mb-1"><span data-i18n="footer-rights">جميع الحقوق محفوظة &copy; 2026</span> <strong><span data-i18n="footer-platform">منصة تمرين</span></strong></p>
+        <p class="mb-0"><a href="https://github.com/d7mSWE/Tamreen" target="_blank" class="text-primary text-decoration-none fw-bold">d7mSWE</a></p>
+    </div>
+</footer>
+</body>
+</html>

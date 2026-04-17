@@ -1,0 +1,170 @@
+/* 
+    ملف التنسيقات المشترك (Shared Styles)
+    يحتوي على المتغيرات، الهيكل العام، شريط التنقل، والتذييل.
+*/
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --card-bg: #ffffff;
+    --footer-bg: #2d3748;
+    --footer-text: #ffffff;
+    --gradient-start: #0d6efd;
+    --gradient-end: #0056b3;
+    --navbar-bg: #0d6efd;
+    --primary-color: #0d6efd;
+}
+
+body.dark-mode {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --text-primary: #f0f6fc;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+    --card-bg: #161b22;
+    --footer-bg: #090a0f;
+    --footer-text: #8b949e;
+    --gradient-start: #1e40af;
+    --gradient-end: #3b82f6;
+    --navbar-bg: linear-gradient(135deg, #181a2f 0%, #11121d 100%);
+    --primary-color: #3b82f6;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== التنسيقات العامة للأزرار والبطاقات ===== */
+.btn {
+    transition: all 0.3s ease !important;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+}
+
+.card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    overflow: hidden;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(13, 110, 253, 0.15) !important;
+    border-color: rgba(13, 110, 253, 0.3) !important;
+}
+
+/* ===== شريط التنقل (Navbar) ===== */
+.navbar {
+    background: var(--navbar-bg);
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white !important;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand i { color: #ffd700; }
+[dir="rtl"] .navbar-brand i { margin-left: 8px; }
+[dir="ltr"] .navbar-brand i { margin-right: 8px; }
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 8px 22px !important;
+    margin: 0 5px;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+.navbar-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* أدوات الـ Navbar (Theme & Language) */
+.theme-toggle {
+    position: relative;
+    width: 60px; height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5px;
+    color: white !important; /* ضمان أن الأيقونات بيضاء دائماً */
+}
+.theme-toggle i {
+    font-size: 14px;
+    color: white !important;
+    z-index: 1;
+}
+
+.theme-toggle-ball {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 26px; height: 26px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+body.dark-mode:not(.ltr) .theme-toggle-ball { transform: translateX(-30px); }
+body.dark-mode.ltr .theme-toggle-ball { transform: translateX(30px); }
+body:not(.ltr) .theme-toggle-ball { left: auto; right: 2px; }
+
+.lang-item span { font-weight: 600; }
+body.dark-mode .dropdown-menu { background-color: var(--card-bg); color: var(--text-primary); }
+body.dark-mode .dropdown-item { color: var(--text-primary); }
+
+/* ===== التذييل (Footer) ===== */
+.footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+}
+.footer a {
+    color: var(--footer-text);
+    opacity: 0.8;
+    text-decoration: none;
+    font-weight: 500;
+}
+.footer a:hover { opacity: 1; color: white; }
+
+/* ===== موديلات تسجيل الدخول (Auth Modals) ===== */
+.auth-modal {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+}
+.auth-input {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--text-muted) !important;
+}
+
+@media (max-width: 991px) {
+    .d-flex.align-items-center.gap-2 { flex-direction: column; width: 100%; }
+}
+
+/* ===== Hero Section (تنسيقات القسم الرئيسي) ===== */
+.intro-purple, .hero-section {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%) !important;
+    color: white !important;
+    padding: 100px 0 !important;
+    text-align: center !important;
+}
+
+body.dark-mode .intro-purple, body.dark-mode .hero-section {
+    background: linear-gradient(135deg, #1a1c2e 0%, #0d0e14 100%) !important;
+}
+

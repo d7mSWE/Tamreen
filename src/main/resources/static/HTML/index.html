@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة تمرين | لإنشاء الاختبارات</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo for Arabic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ملفات الستايل -->
+    <link rel="stylesheet" href="/CSS/style.css?v=145">
+    <link rel="stylesheet" href="/CSS/home.css?v=145">
+    
+    <script src="/javascript/i18n.js?v=145"></script>
+</head>
+<body>
+
+<!-- شريط التنقل (Navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
+    <div class="container">
+        <!-- اسم المنصة -->
+        <a class="navbar-brand" href="/home">
+            <i class="fas fa-file-alt me-2"></i>
+            منصة تمرين
+        </a>
+        
+        <!-- زر القائمة في الشاشات الصغيرة -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- روابط القائمة -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home" data-i18n="home">الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home#create-new-quiz" data-i18n="create-quiz">إنشاء اختبار</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home#features" data-i18n="features">المميزات</a>
+                </li>
+            </ul>
+            
+            <!-- الأزرار في جهة اليسار (في RTL) / اليمين (في LTR) -->
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <!-- زر تسجيل الدخول (الأول) -->
+                <a href="#" class="btn btn btn-outline-light rounded-pill px-4 fw-bold" id="navLoginBtn" data-bs-toggle="modal" data-bs-target="#loginModal" data-i18n="login">
+                    <i class="fas fa-user me-2"></i>
+                    تسجيل الدخول
+                </a>
+                
+                <!-- زر تبديل الوضع الفاتح/الداكن (الثاني) -->
+                <div class="theme-toggle-container">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="theme-toggle-ball"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- القسم الأول: الخلفية + تعريف + تحفيز (الرئيسية) -->
+<section id="home" class="intro-purple text-white text-center py-5 mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-3 fw-bold mb-3 text-white" data-i18n="hero-title">أنشئ اختبارات احترافية في دقائق</h1>
+                <p class="lead mb-4 text-white mx-auto" style="max-width: 700px;" data-i18n="hero-desc">منصة تمرين تمنحك الأدوات الذكية لإنشاء اختبارات تفاعلية للطلاب أو فريق عملك و مشاركتها بكل سهولة</p>
+                <a href="#create-new-quiz" class="btn btn btn-light rounded-pill px-4 py-2 fw-bold shadow btn-lg" data-i18n="start-now">
+                    <i class="fas fa-plus-circle me-2"></i>ابدأ الآن
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم الثاني: زر إنشاء الكويز (ينقل لصفحة أخرى) -->
+<section id="create-new-quiz" class="bg-body-tertiary py-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="card border-0 shadow-lg p-5 rounded-5 bg-body">
+                    <div class="cta-icon mb-4 mx-auto" style="width: 80px; height: 80px; background: rgba(13, 110, 253, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-pencil-alt text-primary fs-1"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold mb-3" data-i18n="create-new-quiz-title">استعد لإنشاء اختبارك الأول</h2>
+                    <p class="lead text-muted mb-5 mx-auto" style="max-width: 600px;" data-i18n="create-new-quiz-desc">انطلق الآن إلى صفحة إنشاء الاختبارات وابدأ في تصميم اختبارك الخاص بكل سهولة</p>
+                    
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a href="/create-quiz" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg">
+                            <i class="fas fa-magic me-2"></i> <span data-i18n="create-quiz-btn">إنشاء الاختبار بنفسي</span>
+                        </a>
+                    </div>
+                    <p class="mt-4 text-muted small" data-i18n="no-registration-needed">لا تحتاج تسجيل - ابدأ فوراً</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم الثالث: الأهداف والميزات -->
+<section id="features" class="bg-body py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-6 fw-bold mb-3" data-i18n="why-choose-us">لماذا تختار منصة تمرين؟</h2>
+                <p class="lead text-secondary mb-5 mx-auto" style="max-width: 600px;" data-i18n="features-subtitle">ميزات تجعل تجربة إنشاء الاختبارت أكثر متعة وفاعلية</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm border-0 h-100 p-4 text-center rounded-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="h5 fw-bold mb-3" data-i18n="feat-fast-title">سرعة الإنشاء</h3>
+                    <p class="text-secondary small" data-i18n="feat-fast-desc">أنشئ اختبار متكامل في أقل من 5 دقائق</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm border-0 h-100 p-4 text-center rounded-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3 class="h5 fw-bold mb-3" data-i18n="feat-share-title">مشاركة سهلة</h3>
+                    <p class="text-secondary small" data-i18n="feat-share-desc">شارك الاختبار عبر رابط مباشر</p>
+                </div>
+            </div>           
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm border-0 h-100 p-4 text-center rounded-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="h5 fw-bold mb-3" data-i18n="feat-unlimited-title">غير محدود</h3>
+                    <p class="text-secondary small" data-i18n="feat-unlimited-desc">لا حدود لعدد الاختبارات</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم السفلي (Footer) -->
+<footer class="bg-dark mt-auto text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1"><span data-i18n="footer-rights">جميع الحقوق محفوظة &copy; 2026</span> <strong><span data-i18n="footer-platform">منصة تمرين</span></strong></p>
+        <p class="mb-0"><a href="https://github.com/d7mSWE/Tamreen" target="_blank" class="text-primary text-decoration-none fw-bold">d7mSWE</a></p>
+    </div>
+</footer>
+
+<!-- Auth Modals -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title" id="loginModalLabel" style="font-weight: 700; color: var(--text-primary);" data-i18n="login-title">تسجيل الدخول</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="loginAlert" class="alert alert-danger" style="display: none; border-radius: 10px;"></div>
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="username-label">اسم المستخدم</label>
+            <input type="text" class="form-control auth-input" id="loginUsername" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="current-password">كلمة المرور</label>
+            <input type="password" class="form-control auth-input" id="loginPassword" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-2" style="border-radius: 12px; padding: 10px; font-weight: 600;" data-i18n="login-submit">دخول</button>
+        </form>
+        <div class="text-center mt-4 mb-2">
+            <span style="color: var(--text-muted);" data-i18n="no-account">ليس لديك حساب؟ </span><a href="#" style="color: var(--primary-color); font-weight: 700; text-decoration: none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal" data-i18n="register-now">سجل الآن</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title" id="registerModalLabel" style="font-weight: 700; color: var(--text-primary);" data-i18n="register-title">إنشاء حساب جديد</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="registerAlert" class="alert alert-danger" style="display: none; border-radius: 10px;"></div>
+        <form id="registerForm">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="email-label">البريد الإلكتروني</label>
+            <input type="email" class="form-control auth-input" id="registerEmail" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="username-label">اسم المستخدم</label>
+            <input type="text" class="form-control auth-input" id="registerUsername" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="password-label">كلمة المرور</label>
+            <input type="password" class="form-control auth-input" id="registerPassword" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: 600; color: var(--text-primary);" data-i18n="confirm-password-label">تأكيد كلمة المرور</label>
+            <input type="password" class="form-control auth-input" id="registerPasswordConfirm" required style="border-radius: 12px; padding: 10px 15px;">
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-2" style="border-radius: 12px; padding: 10px; font-weight: 600;" data-i18n="register-submit">إنشاء الحساب</button>
+        </form>
+        <div class="text-center mt-4 mb-2">
+            <span style="color: var(--text-muted);" data-i18n="have-account">لديك حساب بالفعل؟ </span><a href="#" style="color: var(--primary-color); font-weight: 700; text-decoration: none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal" data-i18n="login-now">سجل دخولك</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (مطلوب فقط لتشغيل الـ navbar collapse) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=132"></script>
+
+<!-- JavaScript الخاصة بالموقع -->
+<script src="/javascript/theme.js?v=140"></script>
+<script src="/javascript/auth.js?v=140"></script>
+
+</body>
+</html>
